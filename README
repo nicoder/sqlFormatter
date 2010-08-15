@@ -1,0 +1,10 @@
+Little tool meant to format a SQL query to be more readable.
+
+Install the folder on a web server with PHP installed and call index.php in a browser.
+
+Current features : 
+- FROM and WHERE start on a new line
+- 'SELECT', 'FROM' and 'WHERE' keywords are uppercased
+
+But :
+- would probably not handle well keywords inside strings yet
