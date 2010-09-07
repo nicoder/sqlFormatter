@@ -2,13 +2,23 @@
 
 class SqlFormatter
 {
+	private $_select;
+	private $_from;
+	private $_where;
+
 	public function format($sql)
 	{
 		$this->_separateSelectAndFrom($sql);
 		$this->_separateFromAndWhere();
+		$this->_formatFrom();
 		return $this->_assemble();
 	}
 
+	private function _formatFrom()
+	{
+		$this->_from = str_ireplace(' left join', "\nLEFT JOIN", $this->_from);
+	}
+	
 	private function _assemble()
 	{
 		$result = $this->_select . "\n" . $this->_from;

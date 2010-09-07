@@ -41,4 +41,16 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		$actual = $o->format($sql);
 		$this->assertEquals($expected, $actual);
 	}
+
+	/**
+	 * @test
+	 */
+	public function leftJoinStartsOnNewLine()
+	{
+		$sql = "SELECT a\nFROM t LEFT JOIN b ON t.a  = b.c WHERE b = c";
+		$expected = "SELECT a\nFROM t\nLEFT JOIN b ON t.a  = b.c\nWHERE b = c";
+		$o = new SqlFormatter();
+		$actual = $o->format($sql);
+		$this->assertEquals($expected, $actual);
+	}
 }
